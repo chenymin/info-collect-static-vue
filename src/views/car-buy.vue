@@ -15,8 +15,9 @@
 
 <script>
   import MyInput from '../components/input'
-  import {formatMobileLimit} from '../utils/util'
+  import {formatMobileLimit, isWeixin} from '../utils/util'
   import formValidMixin from './_mixin/formValidMixin'
+  import {carBuyApply} from '../api/carLoanApply'
 
   export default {
     mixins: [formValidMixin],
@@ -60,16 +61,14 @@
         carInput: {
           props: {
             label: '中意车型',
-            type: 'tel',
+            type: 'text',
             placeholder: '如:大众途观',
             readOnly: false,
             isBorder: true,
             value: '',
-            format: formatMobileLimit,
             validOff: false,
             rules: {
-              required: true,
-              phone: true
+              required: true
             }
           },
           model: 'carModels'
@@ -81,6 +80,10 @@
         if (this.isFormValid()) {
           return
         }
+        carBuyApply(this.applyEdit).then(() => {
+          /* eslint-disable */
+          isWeixin() && WeixinJSBridge.call('closeWindow')
+        })
       }
     },
     components: {

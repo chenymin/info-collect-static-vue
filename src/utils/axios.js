@@ -1,13 +1,13 @@
 import axios from 'axios'
-import URLSearchParams from 'url-search-params'
+// import URLSearchParams from 'url-search-params'
 import {getStore} from './storage'
 import store from '../store/index'
 import eventBus from '../utils/eventBus'
 import _ from 'lodash'
 import router from '../router/index'
-import {getUrl} from '../utils/util'
+// import {getUrl} from '../utils/util'
 
-export const url = process.env.NODE_ENV === 'development' ? 'http://10.166.2.66:8082' : getUrl() + '/credit-server-web'
+export const url = 'https://www.52e-life.xyz/info-collect'
 
 const showToast = (msg) => {
   store.commit('changeToast', {content: msg})
@@ -19,13 +19,14 @@ const instance = axios.create({
   timeout: 10000,
   xsrfCookieName: '_csrf',
   xsrfHeaderName: '_csrf',
-  transformRequest: [function (data, headers) {
-    if (_.isEmpty(data)) return data
-    // transform obj to formData
-    var params = new URLSearchParams()
-    Object.entries(data).forEach((item) => params.append.apply(params, item))
-    return params
-  }],
+  // transformRequest: [function (data, headers) {
+  //   if (_.isEmpty(data)) return data
+  //   // transform obj to formData
+  //   debugger
+  //   var params = new URLSearchParams()
+  //   Object.entries(data).forEach((item) => params.append.apply(params, item))
+  //   return params
+  // }],
   validateStatus (status) {
     return status === 200
   }

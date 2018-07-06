@@ -6,7 +6,7 @@
         <img src='../assets/icon-page.png' class='icon-page'>
       </section>
       <img src='../assets/phone-bg.png' class='img-phone' bindtap="callPhone">
-      <form class='form' bindsubmit="subminActionInfo">
+      <form class='form-wrap' bindsubmit="subminActionInfo">
         <distpicker 
           :props='distpicker.props'
           :model='distpicker.model'
@@ -27,8 +27,9 @@
 <script>
   import MyInput from '../components/input'
   import Distpicker from '../components/distpickers/distpicker'
-  import {formatMobileLimit} from '../utils/util'
+  import {formatMobileLimit, isWeixin} from '../utils/util'
   import formValidMixin from './_mixin/formValidMixin'
+  import {carInsuranceApply} from '../api/carLoanApply'
 
   export default {
     mixins: [formValidMixin],
@@ -117,6 +118,10 @@
         if (this.isFormValid()) {
           return
         }
+        carInsuranceApply(this.applyEdit).then(() => {
+          /* eslint-disable */
+          isWeixin() && WeixinJSBridge.call('closeWindow')
+        })
       }
     },
     components: {
