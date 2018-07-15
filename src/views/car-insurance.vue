@@ -185,7 +185,7 @@
     margin-top: .6rem;
     border-radius: .4rem;
     color: #fff;
-    font-size: .32;
+    font-size: .32rem;
     height: 1rem;
     width: 100%;
   }
