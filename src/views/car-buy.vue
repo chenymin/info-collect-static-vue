@@ -118,17 +118,17 @@
     height: 1rem;
     margin-bottom: 0.1rem;
   }
-    .button-primary {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: .6rem;
-      border-radius: .4rem;
-      color: #fff;
-      font-size: .32;
-      height: 1rem;
-      width: 100%;
-    }
+  .button-primary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: .6rem;
+    border-radius: .4rem;
+    color: #fff;
+    font-size: .32rem;
+    height: 1rem;
+    width: 100%;
+  }
 
   .button-bg-full {
     background-image: linear-gradient(to right, #ff6e34, #fea325);

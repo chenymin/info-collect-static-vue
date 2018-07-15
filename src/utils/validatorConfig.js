@@ -17,6 +17,12 @@ const dictionary = {
       min_value: (label, value) => {
         return `${label}有误`
       },
+      min: (label) => {
+        return `${label}长度不够`
+      },
+      max: (label) => {
+        return `${label}超过最大长度限制`
+      },
       between: (label, ref) => {
         return `${label} 必须在${ref[0]}-${ref[1]}之间`
       },

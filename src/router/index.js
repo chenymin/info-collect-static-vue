@@ -7,12 +7,16 @@ import {setTitle} from '../utils/util'
 Vue.use(Router)
 const CarBuy = r => require.ensure([], () => r(require('@/views/car-buy')), 'chunk-carbuy')
 const CarInsurance = r => require.ensure([], () => r(require('@/views/car-insurance')), 'chunk-carinsurance')
+const CarLoan = r => require.ensure([], () => r(require('@/views/car-loan')), 'chunk-carloan')
+const CarApply = r => require.ensure([], () => r(require('@/views/car-apply')), 'chunk-carapply')
 const Detail = r => require.ensure([], () => r(require('@/views/detail')), 'chunk-detail')
 
 const router = new Router({
   routes: [
     { name: 'carbuy', path: '/carbuy', component: CarBuy, meta: { auth: false, title: '新车团购' } },
     { name: 'carinsurance', path: '/carinsurance', component: CarInsurance, meta: { auth: false, title: '车险' } },
+    { name: 'carloan', path: '/carloan', component: CarLoan, meta: { auth: false, title: '快速贷款' } },
+    { name: 'carapply', path: '/carapply', component: CarApply, meta: { auth: false, title: '客货资格证办理' } },
     { name: 'detail', path: '/detail', component: Detail, meta: { auth: false, title: '详情' } }
   ]
 })
