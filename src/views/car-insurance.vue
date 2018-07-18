@@ -5,7 +5,9 @@
       <section class='icon-page-wrap'>
         <img src='../assets/icon-page.png' class='icon-page'>
       </section>
-      <img src='../assets/phone-bg.png' class='img-phone' bindtap="callPhone">
+       <a href="tel:4006398009">
+          <img src='../assets/phone-bg.png' class='img-phone'>
+      </a>
       <form class='form-wrap' bindsubmit="subminActionInfo">
         <distpicker 
           :props='distpicker.props'
@@ -163,6 +165,7 @@
     position: relative;
     display: flex;
     justify-content: center;
+    height: 45px;
   }
 
   .icon-page {
@@ -175,7 +178,6 @@
   .img-phone {
     width: 100%;
     height: 1rem;
-    margin-bottom: 10px;
   }
 
   .button-primary {

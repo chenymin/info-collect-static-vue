@@ -2,7 +2,9 @@
   <div class="car-insurance">
     <img src="../assets/car_buy_banner.jpg" class="img-banner">
     <section class="section-wrap">
-      <img src='../assets/phone-bg.png' class='img-phone'>
+      <a href="tel:4006398009">
+        <img src='../assets/phone-bg.png' class='img-phone'>
+      </a>
       <form class='form-wrap' @submit.prevent>
         <my-input :props='nameInput.props' :model="nameInput.model"></my-input>
         <my-input :props='mobileInput.props' :model="mobileInput.model"></my-input>

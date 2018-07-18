@@ -4,3 +4,7 @@ export const carInsuranceApply = (data) => axios.post('/car-insurance-apply', da
 
 export const carBuyApply = (data) => axios.post('/car-group-buy-apply', data)
 
+export const carTypeApply = (data) => axios.post('/save-fast-handle', data)
+
+export const carLoan = (data) => axios.post('/save-fast-apply', data)
+

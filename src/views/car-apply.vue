@@ -2,14 +2,16 @@
     <div class='car-insurance'>
         <img src='../assets/car_buy_banner.jpg' class='img-banner'>
         <section class='section-wrap'>
-            <img src='../assets/phone-bg.png' class='img-phone'>
+            <a href="tel:4006398009">
+               <img src='../assets/phone-bg.png' class='img-phone'>
+            </a>
             <form class='form-wrap' @submit.prevent>
                 <my-input :props='nameInput.props' :model="nameInput.model"></my-input>
                 <my-input :props='mobileInput.props' :model="mobileInput.model"></my-input>
                 <div class='form-filed'>
                     <label class='label'>资格证类型</label>
-                    <label class='switch-label switch-label-one' @click="selectAction(0)" :class="{'switch-label-active' : currentIndex === 0}">客运资格证</label>
-                    <label class='switch-label switch-label-two' @click="selectAction(1)" :class="{'switch-label-active' : currentIndex === 1}">货运资格证</label>
+                    <label class='switch-label switch-label-one' @click="selectAction($event, 0)" :class="{'switch-label-active' : currentIndex === 0}">客运资格证</label>
+                    <label class='switch-label switch-label-two' @click="selectAction($event, 1)" :class="{'switch-label-active' : currentIndex === 1}">货运资格证</label>
                 </div>    
                 <button type="submit" class='button-primary button-bg-full' @click.prevent='baseInfoSubmit'>快速申请</button>
             </form>
@@ -21,12 +23,13 @@
   import MyInput from '../components/input'
   import {formatMobileLimit, isWeixin} from '../utils/util'
   import formValidMixin from './_mixin/formValidMixin'
-  import {carBuyApply} from '../api/carLoanApply'
+  import {carTypeApply} from '../api/carLoanApply'
 
   export default {
     mixins: [formValidMixin],
     data () {
       return {
+        qualificationType: '客运资格证',
         currentIndex: 0,
         nameInput: {
           props: {
@@ -66,14 +69,15 @@
       }
     },
     methods: {
-      selectAction (index) {
+      selectAction (event, index) {
+        this.$store.commit('changeApplyEdit', {qualificationType: event.currentTarget.innerText})
         this.currentIndex = index
       },
       baseInfoSubmit () {
         if (this.isFormValid()) {
           return
         }
-        carBuyApply(this.applyEdit).then(() => {
+        carTypeApply(this.applyEdit).then(() => {
           /* eslint-disable */
           isWeixin() && WeixinJSBridge.call('closeWindow')
         })
@@ -81,6 +85,9 @@
     },
     components: {
       MyInput
+    },
+    mounted () {
+        this.$store.commit('changeApplyEdit', {qualificationType: this.qualificationType})
     }
   }
 </script>

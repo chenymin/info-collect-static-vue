@@ -2,7 +2,9 @@
     <div class='car-insurance'>
         <img src='../assets/car_buy_banner.jpg' class='img-banner'>
         <section class='section-wrap'>
-            <img src='../assets/phone-bg.png' class='img-phone'>
+            <a href="tel:4006398009">
+               <img src='../assets/phone-bg.png' class='img-phone'>
+            </a>
             <form class='form-wrap' @submit.prevent>
                  <my-input :props='nameInput.props' :model="nameInput.model"></my-input>
                 <my-input :props='mobileInput.props' :model="mobileInput.model"></my-input>
@@ -17,7 +19,7 @@
   import MyInput from '../components/input'
   import {formatMobileLimit, isWeixin} from '../utils/util'
   import formValidMixin from './_mixin/formValidMixin'
-  import {carBuyApply} from '../api/carLoanApply'
+  import {carLoan} from '../api/carLoanApply'
 
   export default {
     mixins: [formValidMixin],
@@ -72,7 +74,7 @@
             },
             unit: '万元'
           },
-          model: 'carModels'
+          model: 'amount'
         }
       }
     },
@@ -81,7 +83,7 @@
         if (this.isFormValid()) {
           return
         }
-        carBuyApply(this.applyEdit).then(() => {
+        carLoan(this.applyEdit).then(() => {
           /* eslint-disable */
           isWeixin() && WeixinJSBridge.call('closeWindow')
         })
